@@ -10,6 +10,10 @@ body {
   box-sizing: border-box;
 }
 
+#root {
+  padding-bottom: 80px; /* Отступ для фиксированного футера */
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
