@@ -1,0 +1,33 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.table-header th {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+.table-row td {
+    padding: 10px;
+}
+
+.presence-indicator {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.present {
+    background-color: #4CAF50;
+}
+
+.absent {
+    background-color: #f44336;
+}
