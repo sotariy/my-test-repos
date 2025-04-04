@@ -3,7 +3,7 @@ import AddUserButton from "./AddUserButton"
 import { useUsers } from './UserContext'
 
 export default function Header() {
-    const { users, searchQuery, setSearchQuery, filteredUsers } = useUsers();
+    const { filteredUsers, searchQuery, setSearchQuery } = useUsers();
 
     const presentCount = filteredUsers.filter(user => user.presence).length;
     const absentCount = filteredUsers.filter(user => !user.presence).length;
@@ -22,7 +22,6 @@ export default function Header() {
                     value={searchQuery}
                     onChange={handleSearch}
                 />
-                {/* <button className="add-user">Добавить</button> */}
                 <AddUserButton />
             </div>
 
@@ -34,7 +33,6 @@ export default function Header() {
                     <span className="passerby">{absentCount}</span>
                 </div>
             </div>
-
         </header>
     )
 }
