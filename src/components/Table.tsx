@@ -1,6 +1,9 @@
 import './Table.css';
 
 export default function Table() {
+
+
+
     const data = [
         {
             id: 1,

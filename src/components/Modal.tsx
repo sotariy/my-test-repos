@@ -1,3 +1,5 @@
+import close_image from '../assets/close_image.svg'
+
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -10,9 +12,13 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
-                <button className="modal-close" onClick={onClose}>&times;</button>
+                <button
+                    className="modal-close"
+                    onClick={onClose}>
+                        <img className="modal-close-button" src={close_image} alt=""/>
+                </button>
                 {children}
             </div>
         </div>
     );
-} 
+}
