@@ -1,4 +1,4 @@
-import logo from "../assets/logo.svg"
+import logo from "../assets/logo.svg?url"
 import AddUserButton from "./AddUserButton"
 import { useUsers } from './UserContext'
 
