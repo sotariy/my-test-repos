@@ -2,16 +2,52 @@ import { useState } from 'react';
 import Modal from './Modal';
 import './Modal.css';
 import './AddUserButton.css';
+import { useUsers } from './UserContext';
 
 export default function AddUserButton() {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [presence, setPresence] = useState(false);
+    const { addUser } = useUsers();
+    const [formData, setFormData] = useState({
+        name: '',
+        company: '',
+        group: '',
+        presence: false
+    });
 
     const groups = ['Прохожий', 'Клиент', 'Партнер'];
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { id, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [id]: value
+        }));
+    };
+
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData(prev => ({
+            ...prev,
+            presence: e.target.checked
+        }));
+    };
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Добавить логику добавления пользователя 
+        
+        addUser({
+            name: formData.name,
+            company: formData.company,
+            group: formData.group,
+            presence: formData.presence
+        });
+        
+        setFormData({
+            name: '',
+            company: '',
+            group: '',
+            presence: false
+        });
+        
         setIsModalOpen(false);
     };
 
@@ -25,15 +61,32 @@ export default function AddUserButton() {
                 <form onSubmit={handleSubmit}>
                     <div className="form-row">
                         <label htmlFor="name">ФИО</label>
-                        <input type="text" id="name" required />
+                        <input 
+                            type="text" 
+                            id="name" 
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            required 
+                        />
                     </div>
                     <div className="form-row">
                         <label htmlFor="company">Компания</label>
-                        <input type="text" id="company" required />
+                        <input 
+                            type="text" 
+                            id="company" 
+                            value={formData.company}
+                            onChange={handleInputChange}
+                            required 
+                        />
                     </div>
                     <div className="form-row">
                         <label htmlFor="group">Группа</label>
-                        <select id="group" required>
+                        <select 
+                            id="group" 
+                            value={formData.group}
+                            onChange={handleInputChange}
+                            required
+                        >
                             <option value="">Выбрать</option>
                             {groups.map((group) => (
                                 <option key={group} value={group}>
@@ -48,8 +101,8 @@ export default function AddUserButton() {
                             <input 
                                 type="checkbox" 
                                 id="presence" 
-                                checked={presence}
-                                onChange={(e) => setPresence(e.target.checked)}
+                                checked={formData.presence}
+                                onChange={handleCheckboxChange}
                             />
                         </div>
                     </div>

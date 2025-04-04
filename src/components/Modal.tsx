@@ -1,12 +1,23 @@
+import { useEffect } from 'react';
 import close_image from '../assets/close_image.svg'
+import { IModalProps } from './types';
+import './Modal.css';
 
-interface ModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-    children: React.ReactNode;
-}
+export default function Modal({ isOpen, onClose, children }: IModalProps) {
+    useEffect(() => {
+        const handleEscapePress = (e: KeyboardEvent) => {
+            if (e.key === 'Escape' && isOpen) {
+                onClose();
+            }
+        };
 
-export default function Modal({ isOpen, onClose, children }: ModalProps) {
+        document.addEventListener('keydown', handleEscapePress);
+
+        return () => {
+            document.removeEventListener('keydown', handleEscapePress);
+        };
+    }, [isOpen, onClose]);
+
     if (!isOpen) return null;
 
     return (
