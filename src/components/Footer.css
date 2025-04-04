@@ -11,6 +11,7 @@
 }
 
 .filter-label {
+    font-size: 18px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     color: #4e3000;
@@ -24,7 +25,7 @@
 .filter-btn {
     padding: 8px 16px;
     border: none;
-    border-radius: 20px;
+    border-radius: 12px;
     background-color: transparent;
     color: #4e3000;
     font-family: 'Roboto', sans-serif;
@@ -39,4 +40,5 @@
 
 .filter-btn.active {
     background-color: #E0E0E0;
+    color: #fff;
 } 

@@ -1,13 +1,14 @@
 import logo from "../assets/logo.svg"
+import AddUserButton from "./AddUserButton"
 
 export default function Header() {
     return (
-
         <header className="header">
             <div className="logo">
-                <img src={logo} alt="logo" />
+                <img className="logo-img" src={logo} alt="logo" />
                 <input type="text" placeholder="Поиск по имени" />
-                <button className="add-user">Добавить</button>
+                {/* <button className="add-user">Добавить</button> */}
+                <AddUserButton />
             </div>
 
             <div className="users">
