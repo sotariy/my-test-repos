@@ -1,6 +1,7 @@
 import logo from "../assets/logo.svg?url"
 import AddUserButton from "./AddUserButton"
 import { useUsers } from './UserContext'
+import './Header.css'
 
 export default function Header() {
     const { filteredUsers, searchQuery, setSearchQuery } = useUsers();
@@ -16,12 +17,14 @@ export default function Header() {
         <header className="header">
             <div className="logo">
                 <img className="logo-img" src={logo} alt="logo" />
-                <input 
-                    type="text" 
-                    placeholder="Поиск по имени" 
-                    value={searchQuery}
-                    onChange={handleSearch}
-                />
+                <div className="search-container">
+                    <input 
+                        type="text" 
+                        placeholder="Поиск по имени" 
+                        value={searchQuery}
+                        onChange={handleSearch}
+                    />
+                </div>
                 <AddUserButton />
             </div>
 
