@@ -5,8 +5,16 @@ import EditUserModal from './EditUserModal';
 import { IUser } from './types';
 
 export default function Table() {
-    const { filteredUsers } = useUsers();
+    const { filteredUsers, editUser } = useUsers();
     const [editingUser, setEditingUser] = useState<IUser | null>(null);
+
+    const handlePresenceClick = (e: React.MouseEvent, user: IUser) => {
+        e.stopPropagation(); // Предотвращаем открытие модального окна
+        editUser(user.id, {
+            ...user,
+            presence: !user.presence
+        });
+    };
 
     return (
         <div className="table-container">
@@ -35,6 +43,8 @@ export default function Table() {
                             <td>
                                 <div 
                                     className={`presence-indicator ${user.presence ? 'present' : 'absent'}`}
+                                    onClick={(e) => handlePresenceClick(e, user)}
+                                    title={user.presence ? 'Присутствует' : 'Отсутствует'}
                                 />
                             </td>
                         </tr>

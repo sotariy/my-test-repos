@@ -2,15 +2,25 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 html, body {
   height: 100%;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
-  overflow: hidden;
-  max-width: 1280px;
+}
+
+.app-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
   position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .header {

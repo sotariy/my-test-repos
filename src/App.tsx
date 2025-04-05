@@ -7,9 +7,11 @@ import { UserProvider } from './components/UserContext'
 function App() {
   return (
     <UserProvider>
-      <Header />
-      <Table />
-      <Footer />
+      <div className="app-container">
+        <Header />
+        <Table />
+        <Footer />
+      </div>
     </UserProvider>
   )
 }
